@@ -1,23 +1,24 @@
-//your JS code here. If required.
-let btns = document.querySelectorAll(".btn");
-let audio = [];
+let currentSound = null;
+
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     let sound = btn.textContent.trim().toLowerCase();
+    stopCurrentSound();
     play(sound + ".mp3");
   });
 });
+
 function play(sound) {
-  let newAudio = new Audio("sounds/" + sound);
-  newAudio.play();
-  audio.push(newAudio);
+  currentSound = new Audio("./sounds/" + sound);
+  currentSound.play();
 }
 
-document.querySelector(".stop").addEventListener("click", () => {
-  console.log("stop");
-  audio.forEach((sound) => {
-    // console.log(sound);
-    sound.pause();
-    sound.currentTime = 0;
-  });
-});
+document.querySelector(".stop").addEventListener("click", stopCurrentSound);
+
+function stopCurrentSound() {
+  if (currentSound) {
+    currentSound.pause();
+    currentSound.currentTime = 0;
+    currentSound = null;
+  }
+}
