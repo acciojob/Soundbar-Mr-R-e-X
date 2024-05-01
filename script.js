@@ -8,7 +8,7 @@ btns.forEach((btn) => {
   });
 });
 function play(sound) {
-  let newAudio = new Audio("./sounds/" + sound);
+  let newAudio = new Audio("sounds/" + sound);
   newAudio.play();
   audio.push(newAudio);
 }
