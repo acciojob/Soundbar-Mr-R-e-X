@@ -9,10 +9,10 @@ btns.forEach((btn) => {
 });
 
 function play(sound) {
+  stopCurrentSound();
   currentSound = new Audio("./sounds/" + sound);
-  currentSound.onloadeddata = function() {
-    currentSound.play();
-  };
+  document.body.appendChild(currentSound);
+  currentSound.play();
 }
 
 document.querySelector(".stop").addEventListener("click", stopCurrentSound);
@@ -21,6 +21,7 @@ function stopCurrentSound() {
   if (currentSound) {
     currentSound.pause();
     currentSound.currentTime = 0;
+    document.body.removeChild(currentSound);
     currentSound = null;
   }
 }
