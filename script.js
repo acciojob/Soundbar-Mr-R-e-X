@@ -10,7 +10,9 @@ btns.forEach((btn) => {
 
 function play(sound) {
   currentSound = new Audio("./sounds/" + sound);
-  currentSound.play();
+  currentSound.onloadeddata = function() {
+    currentSound.play();
+  };
 }
 
 document.querySelector(".stop").addEventListener("click", stopCurrentSound);
