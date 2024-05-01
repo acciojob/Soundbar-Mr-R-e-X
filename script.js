@@ -1,5 +1,5 @@
 let currentSound = null;
-
+let btns = document.querySelectorAll(".btn");
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     let sound = btn.textContent.trim().toLowerCase();
